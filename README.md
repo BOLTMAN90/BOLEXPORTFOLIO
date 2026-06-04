@@ -18,8 +18,11 @@ Premium futuristic portfolio for **BOLEXMAN**, AI Coding Engineer & Vibe Coder.
 
 ```bash
 npm install
+npm run clean   # if you see Turbopack/HMR chunk errors
 npm run dev
 ```
+
+> **Dev server:** uses Webpack by default (stable). Optional: `npm run dev:turbo` for Turbopack.
 
 Open [http://localhost:3000](http://localhost:3000).
 

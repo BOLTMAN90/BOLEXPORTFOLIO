@@ -1,5 +1,7 @@
 # Phase 03 — Core Layout `#core-layout`
 
+> **Status:** ✅ Complete · Nav uses **page routes** (`/about`, `/projects`, …) not `#` section anchors.
+
 ## Components
 
 | Component | Path | Status |
@@ -10,19 +12,21 @@
 | `Footer` | `src/components/layout/footer.tsx` | [x] |
 | `SectionWrapper` | `src/components/shared/section-wrapper.tsx` | [x] |
 | `MagneticButton` | `src/components/shared/magnetic-button.tsx` | [x] |
+| `PageShell` | `src/components/layout/page-shell.tsx` | [x] |
 
 ## Navbar features
-- [ ] Sticky glass navbar on scroll
-- [ ] Animated BOLEXMAN logo (color cycle)
-- [ ] Section anchor links
-- [ ] Theme toggle (dark default)
-- [ ] Mobile hamburger with slide menu
+- [x] Sticky glass navbar on scroll
+- [x] Animated BOLEXMAN logo (color cycle)
+- [x] Nav links (multi-page routes)
+- [x] Theme toggle (dark default)
+- [x] Mobile hamburger with slide menu
+- [x] Lenis paused while mobile menu open (`lenis-context.tsx`)
 
 ## Footer features
-- [ ] Particle accent (CSS or canvas lite)
-- [ ] Social links row
-- [ ] Copyright + tagline
+- [x] Particle accent (CSS animated dots)
+- [x] Social links row
+- [x] Copyright + tagline
 
 ## Exit criteria
-- Smooth anchor scroll via Lenis
-- All section IDs match nav links
+- [x] Smooth scroll via Lenis (desktop; disabled when `prefers-reduced-motion`)
+- [x] All nav `href`s match real routes in `siteConfig.nav`

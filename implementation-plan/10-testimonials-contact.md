@@ -1,24 +1,27 @@
 # Phase 10 — Testimonials & Contact `#social-proof`
 
+> **Status:** ✅ Complete · **Plan outdated:** v1 said “no backend”; app uses **Gmail API** via `/api/contact`.
+
 ## Testimonials `#testimonials`
-- [ ] 5+ glassmorphism cards
-- [ ] Auto-scrolling carousel (pause on hover)
-- [ ] Star rating or quote marks
-- [ ] Client role + company placeholder
+- [x] 6 glassmorphism cards (plan asked 5+)
+- [x] Auto-scrolling marquee (pause on hover)
+- [x] Star rating + quote marks
+- [x] Client role + company
 
 ## Contact `#contact`
-- [ ] Futuristic form: name, email, message
-- [ ] Floating labels + focus glow
-- [ ] Client-side validation
-- [ ] Submit → toast or success state (no backend required for v1)
+- [x] Futuristic form: name, email, message
+- [x] Floating labels + focus glow
+- [x] Client-side + server validation
+- [x] Success / error states (not toast library — inline UI)
 
 ## Social links
-- Fiverr · Upwork · GitHub · LinkedIn · Discord · Email
+- [x] Fiverr · Upwork · GitHub · LinkedIn · Discord · Email (`src/data/social-links.ts`)
 
 ## Data files
-- `src/data/testimonials.ts`
-- `src/data/social-links.ts`
+- [x] `src/data/testimonials.ts`
+- [x] `src/data/social-links.ts`
 
 ## Exit criteria
-- Form accessible (labels, focus rings)
-- `mailto:` fallback for email CTA
+- [x] Form accessible (labels, focus rings)
+- [x] `mailto:` fallback in footer
+- [ ] **Your task:** `.env.local` with `GMAIL_USER` + `GMAIL_APP_PASSWORD`

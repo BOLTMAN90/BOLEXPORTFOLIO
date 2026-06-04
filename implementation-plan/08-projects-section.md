@@ -1,42 +1,30 @@
 # Phase 08 — Projects Section `#projects` ⭐ HIGH PRIORITY
 
+> **Status:** ✅ Code complete · ⏳ Replace placeholder images & URLs with your real work
+
 ## UX requirements
-- [ ] Cinematic carousel with drag/swipe
-- [ ] Floating card depth (shadow + translateZ feel)
-- [ ] Hover expansion (scale + glow)
-- [ ] Parallax on scroll
-- [ ] Device mockups for mobile projects
+- [x] Cinematic carousel with drag/swipe
+- [x] Floating card depth (shadow + 3D rotateY on drag)
+- [x] Hover expansion (scale + glow on active card)
+- [x] Parallax on scroll (`useScroll` on carousel)
+- [x] Device mockups for mobile projects
+- [x] Keyboard accessible (← → when carousel focused)
 
 ## Data: 10 sample projects
-1. AI SaaS Dashboard
-2. AI Chat Application
-3. Productivity Mobile App
-4. Finance Tracking App
-5. AI Image Generator
-6. Startup Landing Page
-7. Restaurant Ordering App
-8. Real Estate Platform
-9. E-learning Platform
-10. AI Automation Dashboard
+- [x] All 10 defined in `src/data/projects.ts` (placeholder Unsplash images)
 
 ## Each project object
-```ts
-{
-  id, name, category, description, image, stack[],
-  type: 'web' | 'mobile',
-  liveUrl?, appStoreUrl?, playStoreUrl?
-}
-```
+- [x] `{ id, name, category, description, image, stack[], type, liveUrl?, appStoreUrl?, playStoreUrl? }`
 
 ## Images
-- Use high-quality Unsplash / placeholder SaaS UI style images
-- Store in `public/images/projects/`
-- `next/image` with lazy loading + blur placeholder
+- [ ] **Your task:** Add real screenshots to `public/images/projects/`
+- [x] `next/image` with lazy loading + sizes
+- [ ] WebP conversion — optional optimization before launch
 
 ## CTAs
-- Web: **Visit Website**
-- Mobile: **App Store** + **Play Store**
+- [x] Web: **Visit Website**
+- [x] Mobile: **App Store** + **Play Store**
 
 ## Exit criteria
-- Carousel keyboard accessible
-- Images optimized (webp where possible)
+- [x] Carousel keyboard accessible
+- [ ] Images optimized with your assets (replace Unsplash)

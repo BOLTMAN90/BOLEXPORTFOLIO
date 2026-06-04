@@ -1,14 +1,30 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedName } from "./animated-name";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 export function PageLoader() {
+  const pathname = usePathname();
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+  const reduced = useReducedMotion();
+
+  // Never block inner pages — only intro on home
+  useEffect(() => {
+    if (pathname !== "/") {
+      setLoading(false);
+    }
+  }, [pathname]);
 
   useEffect(() => {
+    if (reduced || pathname !== "/") {
+      setLoading(false);
+      return;
+    }
+
     const skip = sessionStorage.getItem("bolex-loaded");
     if (skip) {
       setLoading(false);
@@ -37,7 +53,7 @@ export function PageLoader() {
       clearInterval(interval);
       clearTimeout(timeout);
     };
-  }, []);
+  }, [reduced, pathname]);
 
   return (
     <AnimatePresence>

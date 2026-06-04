@@ -13,7 +13,6 @@ function TechLogo({ name, slug }: { name: string; slug: string }) {
         width={36}
         height={36}
         className="opacity-90 transition hover:opacity-100"
-        unoptimized
       />
       <span className="text-[10px] font-medium text-muted-foreground sm:text-xs">{name}</span>
     </div>

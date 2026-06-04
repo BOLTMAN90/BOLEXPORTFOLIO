@@ -1,23 +1,22 @@
 # Phase 07 — About & Services `#about-services`
 
-## About section `#about`
-- [ ] Intro paragraph (vibe coder / AI engineer)
-- [ ] 11 specialty cards with icons + scroll reveal
-- [ ] Bento-style or responsive grid
+> **Status:** ✅ Complete · Pages: `/about`, `/services`
 
-### Specialties (data-driven)
-AI coding · vibe coding · AI SaaS · mobile · web · Supabase · automation · frontend animations · rapid MVP · debugging AI apps · scalable deploy
+## About section `#about`
+- [x] Intro paragraph (vibe coder / AI engineer)
+- [x] 12 specialty cards with icons + scroll reveal (`src/data/specialties.ts`)
+- [x] Responsive grid (1 → 2 → 3 cols)
 
 ## Services section `#services`
-- [ ] 14 service cards with hover glow border
-- [ ] Icon per service (lucide)
-- [ ] Short premium copy each
+- [x] 14 service cards with hover glow border
+- [x] Icon per service (lucide)
+- [x] Short premium copy each
 
 ## Shared
-- `src/data/specialties.ts`
-- `src/data/services.ts`
-- `ServiceCard.tsx` reusable
+- [x] `src/data/specialties.ts`
+- [x] `src/data/services.ts`
+- [x] Cards in `about-section.tsx` / `services-section.tsx` (no separate `ServiceCard.tsx`)
 
 ## Exit criteria
-- Cards stagger in on scroll (Framer `whileInView`)
-- Hover glow performs without jank
+- [x] Cards stagger in on scroll (`RevealOnScroll` + Framer hover)
+- [x] Hover glow without jank

@@ -84,7 +84,7 @@ export function ContactSection() {
           onSubmit={handleSubmit}
           initial={{ opacity: 0, x: -24 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           className="glass-strong glow-border space-y-6 rounded-3xl p-8"
         >
           <FloatingField id="name" label="Your Name">
@@ -132,7 +132,7 @@ export function ContactSection() {
         <motion.div
           initial={{ opacity: 0, x: 24 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           className="flex flex-col justify-center"
         >
           <h3 className="text-2xl font-bold">Connect with BOLEXMAN</h3>

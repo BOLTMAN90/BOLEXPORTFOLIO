@@ -9,10 +9,12 @@ import { useTheme } from "next-themes";
 import { AnimatedName } from "@/components/shared/animated-name";
 import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
+import { useLenisControl } from "@/context/lenis-context";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { setScrollLocked } = useLenisControl();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
@@ -27,7 +29,12 @@ export function Navbar() {
 
   useEffect(() => {
     setOpen(false);
-  }, [pathname]);
+    setScrollLocked(false);
+  }, [pathname, setScrollLocked]);
+
+  useEffect(() => {
+    setScrollLocked(open);
+  }, [open, setScrollLocked]);
 
   return (
     <header

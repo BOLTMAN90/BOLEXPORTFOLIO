@@ -4,9 +4,12 @@ import { ThemeProvider } from "next-themes";
 import { ReactNode, useEffect } from "react";
 import Lenis from "lenis";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { LenisProvider, useLenisControl } from "@/context/lenis-context";
+import { ScrollToTopOnNavigate } from "@/components/shared/scroll-to-top-on-navigate";
 
 function SmoothScroll({ children }: { children: ReactNode }) {
   const reduced = useReducedMotion();
+  const { lenisRef } = useLenisControl();
 
   useEffect(() => {
     if (reduced) return;
@@ -16,6 +19,7 @@ function SmoothScroll({ children }: { children: ReactNode }) {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
+    lenisRef.current = lenis;
 
     function raf(time: number) {
       lenis.raf(time);
@@ -27,17 +31,25 @@ function SmoothScroll({ children }: { children: ReactNode }) {
 
     return () => {
       lenis.destroy();
+      lenisRef.current = null;
       document.documentElement.classList.remove("lenis", "lenis-smooth");
     };
-  }, [reduced]);
+  }, [reduced, lenisRef]);
 
-  return <>{children}</>;
+  return (
+    <>
+      <ScrollToTopOnNavigate />
+      {children}
+    </>
+  );
 }
 
 export function Providers({ children }: { children: ReactNode }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange={false}>
-      <SmoothScroll>{children}</SmoothScroll>
+      <LenisProvider>
+        <SmoothScroll>{children}</SmoothScroll>
+      </LenisProvider>
     </ThemeProvider>
   );
 }

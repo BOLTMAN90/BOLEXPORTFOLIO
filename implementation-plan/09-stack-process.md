@@ -1,25 +1,23 @@
 # Phase 09 — Tech Stack & Process `#stack-process`
 
+> **Status:** ✅ Complete · Pages: `/stack`, `/process`
+
 ## Tech Stack `#stack`
-- [ ] Infinite horizontal marquee carousel
-- [ ] 17 tech logos (SVG or simple-icons CDN)
-- [ ] Hover scale + glow per logo
-- [ ] Duplicate list for seamless loop
+- [x] Infinite horizontal marquee carousel
+- [x] 17 tech logos (simple-icons CDN)
+- [x] Hover scale + glow per logo
+- [x] Duplicate list for seamless loop
+- [x] Marquee pauses on hover
 
 ## Process Timeline `#process`
-Steps:
-1. Idea
-2. AI Planning
-3. Rapid Prototyping
-4. AI Coding
-5. Backend Integration
-6. Testing
-7. Deployment
+Steps 1–7 in `src/data/process.ts`:
+1. Idea → 7. Deployment
 
-- [ ] Vertical timeline desktop / horizontal mobile
-- [ ] Animated connecting line (GSAP draw or CSS)
-- [ ] Scroll-triggered step highlights
+- [x] Vertical timeline desktop
+- [x] Horizontal scroll timeline on mobile (`< md`)
+- [x] Animated connecting line (GSAP ScrollTrigger scrub, desktop)
+- [x] Scroll-triggered step reveals (`RevealOnScroll`)
 
 ## Exit criteria
-- Marquee pauses on hover (optional)
-- Timeline readable on 375px width
+- [x] Marquee pauses on hover
+- [x] Timeline readable on 375px width

@@ -3,6 +3,7 @@
 import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 function Particles({ count = 4000 }) {
   const mesh = useRef<THREE.Points>(null);
@@ -65,9 +66,16 @@ function Particles({ count = 4000 }) {
 }
 
 export function ParticleField() {
+  const reduced = useReducedMotion();
+
+  if (reduced) {
+    return <div className="absolute inset-0 -z-10 gradient-mesh opacity-60" aria-hidden />;
+  }
+
   return (
-    <div className="absolute inset-0 -z-10">
+    <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
       <Canvas
+        className="pointer-events-none"
         camera={{ position: [0, 0, 12], fov: 60 }}
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true }}

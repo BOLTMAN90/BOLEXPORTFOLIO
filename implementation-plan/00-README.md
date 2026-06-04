@@ -3,9 +3,50 @@
 > **Owner:** BOLEXMAN · **Role:** AI Coding Engineer & Vibe Coder  
 > **Stack:** Next.js · TypeScript · Tailwind · Framer Motion · GSAP · R3F · Lenis · shadcn/ui
 
+**Last synced:** 2026-06-01 · `npm run build` passes
+
+## Progress snapshot
+
+| Phase | Tag | Status | Notes |
+|-------|-----|--------|-------|
+| 01 | `#setup` | ✅ Complete | |
+| 02 | `#design-system` | ✅ Complete | |
+| 03 | `#core-layout` | ✅ Complete | Multi-page routes (not single-page `#` anchors) |
+| 04 | `#animations` | ✅ Complete | Lenis in `providers.tsx` + `lenis-context.tsx` |
+| 05 | `#webgl` | ✅ Complete | Error boundary + reduced-motion fallback |
+| 06 | `#hero` | ✅ Complete | CTAs → `/projects`, `/contact` |
+| 07 | `#about-services` | ✅ Complete | 12 specialties, 14 services |
+| 08 | `#projects` | ✅ Mostly | Sample data + Unsplash; swap for `public/images/projects/` |
+| 09 | `#stack-process` | ✅ Complete | Mobile horizontal process timeline added |
+| 10 | `#social-proof` | ✅ Complete | Gmail API (not toast-only v1) |
+| 11 | `#seo-perf` | ✅ Complete | `sitemap.ts`, `robots.ts`, `icon.tsx` |
+| 12 | `#qa-launch` | ⏳ Manual | Run checklist before deploy |
+
+## Architecture updates (plan was written for single-page)
+
+The original plan assumed one long page with `#about`, `#projects`, etc. **The app uses separate routes** instead:
+
+| Plan assumed | Actual |
+|--------------|--------|
+| `#projects` anchor | `/projects` page |
+| `#contact` anchor | `/contact` page |
+| `hero-cta.tsx` | CTAs inline in `hero-section.tsx` |
+| `SmoothScrollProvider` | `Providers` + `LenisProvider` |
+| `ServiceCard.tsx` | Cards inline in `services-section.tsx` |
+
+This is intentional — better SEO and shareable URLs.
+
+## What YOU still need to do (not code)
+
+1. **`.env.local`** — copy from `.env.example`; Gmail App Password for contact form  
+2. **`NEXT_PUBLIC_SITE_URL`** — your production domain (OG + sitemap)  
+3. **Real content** — `src/data/projects.ts`, testimonials, social URLs  
+4. **Project images** — add to `public/images/projects/` and update paths  
+5. **Phase 12 QA** — test 375 / 768 / 1280 / 1920, Safari WebGL, deploy Vercel  
+
 ## How to use this folder
 
-Each file is a **tagged phase**. Work in order (`01` → `12`). Check off items in each file as you complete them.
+Each file is a **tagged phase**. Phases `01`–`11` are implemented in code; use `12-qa-launch.md` before going live.
 
 | Tag | File | Phase |
 |-----|------|-------|
@@ -30,38 +71,23 @@ Each file is a **tagged phase**. Work in order (`01` → `12`). Check off items 
 | `--accent-purple` | `#7C3AED` | Primary accent |
 | `--glow-cyan` | `#00E5FF` | Glow highlights |
 
-## Folder structure (target)
+## Folder structure (current)
 
 ```
 bolexportfolio/
-├── implementation-plan/     ← you are here
+├── implementation-plan/
 ├── public/
-│   ├── favicon.ico
-│   └── images/projects/
+│   └── images/projects/     ← add real screenshots here
 ├── src/
-│   ├── app/
-│   │   ├── layout.tsx
-│   │   ├── page.tsx
-│   │   └── globals.css
+│   ├── app/                 ← pages + api/contact + robots + sitemap
 │   ├── components/
-│   │   ├── ui/              ← shadcn
-│   │   ├── layout/
-│   │   ├── sections/
-│   │   ├── three/
-│   │   └── shared/
+│   ├── context/             ← lenis-context.tsx
 │   ├── data/
-│   ├── hooks/
-│   └── lib/
+│   └── hooks/               ← use-gsap-scroll, use-reduced-motion
 └── ...
 ```
 
-## Build order (summary)
+## Build order (summary) — DONE
 
-1. **Setup** — Next.js 15, Tailwind, shadcn, install motion libs  
-2. **Design** — CSS variables, fonts, glass utilities  
-3. **Providers** — Theme, Lenis, GSAP ScrollTrigger  
-4. **WebGL** — Lazy-loaded particle field (hero)  
-5. **Sections** — Hero → About → Services → Projects → Stack → Process → Testimonials → Contact → Footer  
-6. **Polish** — Loader, magnetic buttons, SEO, responsive pass  
-
-**Estimated phases:** 12 · **Priority:** Hero + Projects first for wow factor
+1. ~~Setup~~ · ~~Design~~ · ~~Providers~~ · ~~WebGL~~ · ~~Sections~~ · ~~Polish~~  
+2. **Next:** Content swap + QA + deploy
