@@ -24,30 +24,32 @@ export function Footer() {
       </div>
 
       <div className="relative mx-auto max-w-7xl">
-        <div className="text-center md:text-left">
-          <Link href="/">
-            <AnimatedName className="text-2xl" />
-          </Link>
-          <p className="mt-2 max-w-sm text-sm text-muted-foreground">
-            AI Coding Engineer & Vibe Coder — building the future, one prompt at a time.
-          </p>
-          <a
-            href={`mailto:${siteConfig.email}`}
-            className="mt-2 inline-block text-sm text-[#00E5FF] hover:underline"
-          >
-            {siteConfig.email}
-          </a>
-        </div>
+        <div className="flex flex-col items-center gap-10 text-center md:flex-row md:items-start md:justify-between md:text-left">
+          <div>
+            <Link href="/">
+              <AnimatedName className="text-2xl" />
+            </Link>
+            <p className="mt-2 max-w-sm text-sm text-muted-foreground">
+              AI Coding Engineer & Vibe Coder — building the future, one prompt at a time.
+            </p>
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className="mt-2 inline-block text-sm text-[#00E5FF] hover:underline"
+            >
+              {siteConfig.email}
+            </a>
+            <p className="mt-6 text-xs text-muted-foreground">
+              © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+            </p>
+          </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm text-muted-foreground sm:flex-row">
-          <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <nav className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground md:justify-end">
             {siteConfig.nav.slice(1).map((item) => (
               <Link key={item.href} href={item.href} className="hover:text-[#00E5FF]">
                 {item.label}
               </Link>
             ))}
-          </div>
+          </nav>
         </div>
       </div>
     </footer>
