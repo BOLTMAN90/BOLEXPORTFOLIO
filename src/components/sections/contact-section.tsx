@@ -2,7 +2,7 @@
 
 import { useState, type ReactNode, type FormEvent } from "react";
 import { motion } from "framer-motion";
-import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { Send, CheckCircle } from "lucide-react";
 import { SectionWrapper } from "@/components/shared/section-wrapper";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -34,67 +34,48 @@ function FloatingField({
   );
 }
 
-export function ContactSection() {
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [errorMsg, setErrorMsg] = useState("");
+function buildGmailComposeUrl(name: string, email: string, message: string) {
+  const subject = `Portfolio inquiry from ${name}`;
+  const body = [
+    `Name: ${name}`,
+    `Email: ${email}`,
+    "",
+    "Message:",
+    message,
+    "",
+    "---",
+    "Sent via BOLEXMAN portfolio contact form",
+  ].join("\n");
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const params = new URLSearchParams({
+    view: "cm",
+    fs: "1",
+    to: siteConfig.email,
+    su: subject,
+    body,
+  });
+
+  return `https://mail.google.com/mail/?${params.toString()}`;
+}
+
+export function ContactSection() {
+  const [status, setStatus] = useState<"idle" | "success">("idle");
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus("loading");
-    setErrorMsg("");
 
     const form = e.currentTarget;
     const formData = new FormData(form);
-    const name = formData.get("name") as string;
-    const email = formData.get("email") as string;
-    const message = formData.get("message") as string;
+    const name = (formData.get("name") as string).trim();
+    const email = (formData.get("email") as string).trim();
+    const message = (formData.get("message") as string).trim();
 
-    try {
-      const web3Key = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY?.trim();
+    const gmailUrl = buildGmailComposeUrl(name, email, message);
+    window.open(gmailUrl, "_blank", "noopener,noreferrer");
 
-      if (web3Key) {
-        const res = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({
-            access_key: web3Key,
-            subject: `New portfolio message from ${name}`,
-            from_name: name,
-            email,
-            message,
-          }),
-        });
-        const data = (await res.json()) as { success?: boolean; message?: string };
-        if (!data.success) throw new Error(data.message ?? "Failed to send message.");
-      } else {
-        // FormSubmit works from the browser on Vercel (Gmail SMTP does not)
-        const res = await fetch(
-          `https://formsubmit.co/ajax/${encodeURIComponent(siteConfig.email)}`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json", Accept: "application/json" },
-            body: JSON.stringify({
-              name,
-              email,
-              message,
-              _subject: `New portfolio message from ${name}`,
-              _template: "table",
-              _captcha: "false",
-            }),
-          }
-        );
-        const data = (await res.json()) as { success?: boolean | string; message?: string };
-        const ok = data.success === true || data.success === "true";
-        if (!ok) throw new Error(data.message ?? "Failed to send message.");
-      }
-
-      setStatus("success");
-      form.reset();
-      setTimeout(() => setStatus("idle"), 5000);
-    } catch (err) {
-      setStatus("error");
-      setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
-    }
+    setStatus("success");
+    form.reset();
+    setTimeout(() => setStatus("idle"), 6000);
   };
 
   return (
@@ -113,42 +94,40 @@ export function ContactSection() {
           viewport={{ once: true, amount: 0.2 }}
           className="glass-strong glow-border space-y-6 rounded-3xl p-8"
         >
+          <p className="text-sm text-muted-foreground">
+            Fill in your details and we&apos;ll open Gmail with your message ready to send to{" "}
+            <span className="text-[#00E5FF]">{siteConfig.email}</span>. Hit send in Gmail and
+            we&apos;ll continue the conversation there.
+          </p>
+
           <FloatingField id="name" label="Your Name">
-            <Input id="name" name="name" required className="pt-6" placeholder=" " disabled={status === "loading"} />
+            <Input id="name" name="name" required className="pt-6" placeholder=" " />
           </FloatingField>
           <FloatingField id="email" label="Your Email">
-            <Input id="email" name="email" type="email" required className="pt-6" placeholder=" " disabled={status === "loading"} />
+            <Input id="email" name="email" type="email" required className="pt-6" placeholder=" " />
           </FloatingField>
           <FloatingField id="message" label="Project Details">
-            <Textarea id="message" name="message" required className="min-h-[140px] pt-8" placeholder=" " disabled={status === "loading"} />
+            <Textarea id="message" name="message" required className="min-h-[140px] pt-8" placeholder=" " />
           </FloatingField>
 
-          {status === "error" && (
-            <p className="flex items-center gap-2 text-sm text-red-400">
-              <AlertCircle className="h-4 w-4 shrink-0" />
-              {errorMsg}{" "}
-              <a href={`mailto:${siteConfig.email}`} className="underline">
-                Email me directly
-              </a>
+          {status === "success" && (
+            <p className="flex items-center gap-2 text-sm text-[#00E5FF]">
+              <CheckCircle className="h-4 w-4 shrink-0" />
+              Gmail opened — click <strong>Send</strong> in Gmail to deliver your message.
             </p>
           )}
 
           <MagneticButton>
-            <Button type="submit" variant="glow" size="lg" className="w-full" disabled={status === "loading"}>
-              {status === "loading" ? (
-                <>
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                  Sending...
-                </>
-              ) : status === "success" ? (
+            <Button type="submit" variant="glow" size="lg" className="w-full">
+              {status === "success" ? (
                 <>
                   <CheckCircle className="h-4 w-4" />
-                  Message Sent!
+                  Gmail Ready — Press Send There
                 </>
               ) : (
                 <>
                   <Send className="h-4 w-4" />
-                  Send Message
+                  Send Message via Gmail
                 </>
               )}
             </Button>
