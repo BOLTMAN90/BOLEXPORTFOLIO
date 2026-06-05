@@ -1,46 +1,48 @@
 # Phase 12 — QA & Launch `#qa-launch`
 
-> **Status:** ⏳ **YOU run this checklist** before deploy. Code phases 01–11 are complete.
+> **Status:** Build verified · Deploy pending Vercel account + Gmail App Password
 
-## Responsive checklist
+## Automated QA (done)
+- [x] `npm run build` — 18 routes, no errors
+- [x] `npm run lint` — no warnings
+- [x] All project routes static: flowcoach-ai, urunn, assistant-ai
+- [x] Pushed to GitHub `main`
+
+## Responsive checklist (manual in browser)
 - [ ] 375px (iPhone SE)
 - [ ] 768px (tablet)
 - [ ] 1280px (laptop)
 - [ ] 1920px (desktop)
 
-## Cross-browser
+## Cross-browser (manual)
 - [ ] Chrome / Edge
 - [ ] Firefox
 - [ ] Safari (WebGL + smooth scroll)
 
 ## Motion QA
-- [ ] Reduced motion disables heavy animations (OS setting)
-- [x] Loader skippable on repeat visit (sessionStorage `bolex-loaded`)
-- [x] Loader skipped immediately when `prefers-reduced-motion`
+- [x] Reduced motion disables heavy animations
+- [x] Loader skippable on repeat visit (sessionStorage)
+- [x] Route change scroll-to-top fix
 
 ## Content QA
-- [x] All nav routes exist (`/`, `/about`, … `/contact`)
-- [x] External project links use `target="_blank" rel="noopener"`
-- [x] BOLEXMAN name animates colors
-- [x] Typing effect cycles `siteConfig.typingWords`
-- [ ] Replace placeholder projects/testimonials with real copy
-- [ ] Contact form sends email (requires `.env.local`)
+- [x] All nav routes work
+- [x] Project external links open `target="_blank" rel="noopener"`
+- [x] Real projects + screenshots in portfolio
+- [ ] Contact form sends email (needs `GMAIL_APP_PASSWORD`)
 
-## Pre-launch
+## Deploy checklist
+1. [ ] Import https://github.com/BOLTMAN90/BOLEXPORTFOLIO on Vercel
+2. [ ] Add env vars: `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `CONTACT_TO_EMAIL`, `NEXT_PUBLIC_SITE_URL`
+3. [ ] Deploy and test live contact form
+4. [ ] Optional: custom domain
+
 ```bash
-npm install
 npm run build
 npm run start
 ```
 
-## Deploy targets (user choice)
-- Vercel (recommended for Next.js)
-- Set env vars: `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `CONTACT_TO_EMAIL`, `NEXT_PUBLIC_SITE_URL`
-
-## Post-launch ideas (v2)
+## Post-launch (v2)
 - CMS for projects
 - Resend instead of Gmail SMTP
 - Blog / case studies
 - Vercel Analytics
-- Text split GSAP reveals
-- Section pin on projects
