@@ -1,20 +1,30 @@
 "use client";
 
-import Image from "next/image";
 import { SectionWrapper } from "@/components/shared/section-wrapper";
 import { techStack } from "@/data/tech-stack";
+
+function iconUrl(slug: string): string {
+  // Iconify serves SVG over HTTP — works on Vercel (Next/Image breaks on simpleicons CDN)
+  const path = slug === "heart" ? "mdi/heart" : `simple-icons/${slug}`;
+  return `https://api.iconify.design/${path}.svg?color=%237C3AED&width=36&height=36`;
+}
 
 function TechLogo({ name, slug }: { name: string; slug: string }) {
   return (
     <div className="glass glow-border-hover mx-3 flex h-20 w-20 flex-shrink-0 flex-col items-center justify-center gap-2 rounded-2xl transition hover:scale-110 sm:h-24 sm:w-24">
-      <Image
-        src={`https://cdn.simpleicons.org/${slug}/7C3AED`}
-        alt={name}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={iconUrl(slug)}
+        alt=""
         width={36}
         height={36}
-        className="opacity-90 transition hover:opacity-100"
+        className="h-9 w-9 opacity-90 transition hover:opacity-100"
+        loading="lazy"
+        decoding="async"
       />
-      <span className="text-[10px] font-medium text-muted-foreground sm:text-xs">{name}</span>
+      <span className="text-center text-[10px] font-medium text-muted-foreground sm:text-xs">
+        {name}
+      </span>
     </div>
   );
 }

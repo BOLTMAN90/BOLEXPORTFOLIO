@@ -144,33 +144,6 @@ export function ContactSection() {
           <p className="mt-3 text-muted-foreground">
             Available for freelance AI development, MVP builds, and premium interactive websites.
           </p>
-          <a
-            href={`mailto:${siteConfig.email}`}
-            className="mt-4 text-lg font-medium text-[#00E5FF] hover:underline"
-          >
-            {siteConfig.email}
-          </a>
-          <p className="mt-2 text-sm text-muted-foreground">
-            GitHub:{" "}
-            <a
-              href={siteConfig.github.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#00E5FF] hover:underline"
-            >
-              {siteConfig.github.username}
-            </a>
-            {" · "}
-            Discord:{" "}
-            <a
-              href={siteConfig.discord.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#00E5FF] hover:underline"
-            >
-              {siteConfig.discord.username}
-            </a>
-          </p>
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
             {socialLinks.map((link) => (
               <a
