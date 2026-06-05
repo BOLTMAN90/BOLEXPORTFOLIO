@@ -2,8 +2,8 @@ export const siteConfig = {
   name: "BOLEXMAN",
   title: "BOLEXMAN | AI Coding Engineer & Vibe Coder",
   description:
-    "Premium AI developer portfolio. I build AI-powered web apps, mobile apps, SaaS products, automations, and cinematic user experiences with cutting-edge AI tools.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://bolexman.dev",
+    "AI Coding Engineer & Vibe Coder. I build AI-powered web apps, mobile apps, and SaaS products — including FlowCoach AI, URUNN, and Assistant App Builder — with Cursor, Supabase, and cinematic UI.",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://bolexportfolio.vercel.app",
   email: "belrender000@gmail.com",
   github: {
     username: "BOLTMAN90",
@@ -11,17 +11,17 @@ export const siteConfig = {
   },
   discord: {
     username: "bolexman00",
-    url: "https://discord.com",
+    url: "https://discord.com/users/bolexman00",
   },
   typingWords: [
-    "Rork",
-    "Lovable",
+    "FlowCoach AI",
+    "URUNN",
     "Cursor",
-    "Bolt",
     "Supabase",
+    "React Native",
+    "Next.js",
     "WebGL",
     "AI SaaS",
-    "Mobile Apps",
     "Vibe Coding",
   ],
   nav: [

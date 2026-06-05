@@ -1,30 +1,27 @@
 # Phase 08 — Projects Section `#projects` ⭐ HIGH PRIORITY
 
-> **Status:** ✅ Code complete · ⏳ Replace placeholder images & URLs with your real work
+> **Status:** ✅ Complete · 3 real projects with per-page routes
+
+## Projects live in portfolio
+
+| Slug | Name | Links |
+|------|------|-------|
+| `flowcoach-ai` | FlowCoach AI | Google Play |
+| `urunn` | URUNN | Website, App Store, Google Play |
+| `assistant-ai` | Assistant App Builder | Google Play |
 
 ## UX requirements
-- [x] Cinematic carousel with drag/swipe
-- [x] Floating card depth (shadow + 3D rotateY on drag)
-- [x] Hover expansion (scale + glow on active card)
-- [x] Parallax on scroll (`useScroll` on carousel)
-- [x] Device mockups for mobile projects
-- [x] Keyboard accessible (← → when carousel focused)
+- [x] Per-project pages at `/projects/[slug]`
+- [x] Content + screenshots on same page (one card)
+- [x] Clickable previews → live store/site links
+- [x] Project index at `/projects`
+- [x] Phone mockups (mobile) / browser frame (web)
+- [x] Download buttons (website, App Store, Play Store as applicable)
 
-## Data: 10 sample projects
-- [x] All 10 defined in `src/data/projects.ts` (placeholder Unsplash images)
-
-## Each project object
-- [x] `{ id, name, category, description, image, stack[], type, liveUrl?, appStoreUrl?, playStoreUrl? }`
-
-## Images
-- [ ] **Your task:** Add real screenshots to `public/images/projects/`
-- [x] `next/image` with lazy loading + sizes
-- [ ] WebP conversion — optional optimization before launch
-
-## CTAs
-- [x] Web: **Visit Website**
-- [x] Mobile: **App Store** + **Play Store**
+## Data
+- [x] `src/data/projects.ts`
+- [x] Images in `public/images/projects/`
 
 ## Exit criteria
-- [x] Carousel keyboard accessible
-- [ ] Images optimized with your assets (replace Unsplash)
+- [x] All project routes build statically
+- [x] External links use `target="_blank" rel="noopener"`

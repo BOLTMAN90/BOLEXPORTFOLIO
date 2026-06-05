@@ -2,17 +2,15 @@
 
 Premium futuristic portfolio for **BOLEXMAN**, AI Coding Engineer & Vibe Coder.
 
+**Live repo:** [github.com/BOLTMAN90/BOLEXPORTFOLIO](https://github.com/BOLTMAN90/BOLEXPORTFOLIO)
+
 ## Tech Stack
 
 - Next.js 15 (App Router)
 - TypeScript
 - Tailwind CSS v4
-- Framer Motion
-- GSAP + ScrollTrigger
-- Three.js / React Three Fiber
-- Lenis smooth scroll
-- shadcn/ui components
-- next-themes (dark default)
+- Framer Motion, GSAP, Three.js / R3F, Lenis
+- shadcn/ui, next-themes (dark default)
 
 ## Getting Started
 
@@ -21,8 +19,6 @@ npm install
 npm run clean   # if you see Turbopack/HMR chunk errors
 npm run dev
 ```
-
-> **Dev server:** uses Webpack by default (stable). Optional: `npm run dev:turbo` for Turbopack.
 
 Open [http://localhost:3000](http://localhost:3000).
 
@@ -33,10 +29,6 @@ npm run build
 npm run start
 ```
 
-## Implementation Plan
-
-Step-by-step build guide with tags lives in [`implementation-plan/`](./implementation-plan/00-README.md).
-
 ## Pages
 
 | Route | Content |
@@ -44,31 +36,44 @@ Step-by-step build guide with tags lives in [`implementation-plan/`](./implement
 | `/` | Hero + navigation cards |
 | `/about` | About & specialties |
 | `/services` | Services |
-| `/projects` | Project showcase |
+| `/projects` | Project index |
+| `/projects/flowcoach-ai` | FlowCoach AI |
+| `/projects/urunn` | URUNN |
+| `/projects/assistant-ai` | Assistant App Builder |
 | `/stack` | Tech stack |
 | `/process` | Workflow timeline |
 | `/testimonials` | Client reviews |
 | `/contact` | Contact form |
 
-## Contact form (email delivery)
+## Environment variables
 
-Copy `.env.example` to `.env.local` and add a [Gmail App Password](https://myaccount.google.com/apppasswords):
+Copy `.env.example` → `.env.local`:
 
 ```
 CONTACT_TO_EMAIL=belrender000@gmail.com
 GMAIL_USER=belrender000@gmail.com
-GMAIL_APP_PASSWORD=your_app_password
+GMAIL_APP_PASSWORD=your_16_character_app_password
+NEXT_PUBLIC_SITE_URL=https://your-vercel-domain.vercel.app
 ```
 
-Messages from the contact form are sent to **belrender000@gmail.com**.
+Get a Gmail App Password: [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords)
+
+**Contact form requires `GMAIL_APP_PASSWORD`** — without it, submissions return a 503 error.
+
+## Deploy on Vercel
+
+1. Import [BOLEXPORTFOLIO](https://github.com/BOLTMAN90/BOLEXPORTFOLIO) on [vercel.com](https://vercel.com)
+2. Add the env vars above in **Project → Settings → Environment Variables**
+3. Deploy — Vercel auto-builds on every `main` push
+4. Update `NEXT_PUBLIC_SITE_URL` to your Vercel URL (or custom domain)
 
 ## Customize
 
-- Profile links: `src/data/site.ts` (GitHub, Discord, email)
+- Projects: `src/data/projects.ts` + `public/images/projects/`
+- Profile: `src/data/site.ts`
 - Social links: `src/data/social-links.ts`
-- Projects: `src/data/projects.ts`
-- `NEXT_PUBLIC_SITE_URL` for production OG metadata
+- Testimonials: `src/data/testimonials.ts`
 
-## Deploy
+## Implementation Plan
 
-Optimized for [Vercel](https://vercel.com).
+Build phases: [`implementation-plan/`](./implementation-plan/00-README.md)
