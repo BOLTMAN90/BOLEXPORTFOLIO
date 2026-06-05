@@ -50,16 +50,42 @@ export function ContactSection() {
     const message = formData.get("message") as string;
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message }),
-      });
+      const web3Key = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY?.trim();
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.error ?? "Failed to send message.");
+      if (web3Key) {
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            access_key: web3Key,
+            subject: `New portfolio message from ${name}`,
+            from_name: name,
+            email,
+            message,
+          }),
+        });
+        const data = (await res.json()) as { success?: boolean; message?: string };
+        if (!data.success) throw new Error(data.message ?? "Failed to send message.");
+      } else {
+        // FormSubmit works from the browser on Vercel (Gmail SMTP does not)
+        const res = await fetch(
+          `https://formsubmit.co/ajax/${encodeURIComponent(siteConfig.email)}`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify({
+              name,
+              email,
+              message,
+              _subject: `New portfolio message from ${name}`,
+              _template: "table",
+              _captcha: "false",
+            }),
+          }
+        );
+        const data = (await res.json()) as { success?: boolean | string; message?: string };
+        const ok = data.success === true || data.success === "true";
+        if (!ok) throw new Error(data.message ?? "Failed to send message.");
       }
 
       setStatus("success");
