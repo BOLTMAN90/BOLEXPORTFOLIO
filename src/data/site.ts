@@ -13,6 +13,17 @@ export const siteConfig = {
     username: "bolexman00",
     url: "https://discord.com/users/bolexman00",
   },
+  twitter: {
+    username: "bolexman",
+    url: "https://x.com/bolexman",
+  },
+  facebook: {
+    url: "https://www.facebook.com/bolexman",
+  },
+  instagram: {
+    username: "bolexman",
+    url: "https://www.instagram.com/bolexman",
+  },
   typingWords: [
     "FlowCoach AI",
     "URUNN",

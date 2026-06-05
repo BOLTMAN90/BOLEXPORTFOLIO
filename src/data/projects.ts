@@ -33,7 +33,8 @@ export const projects: Project[] = [
       "/images/projects/flowcoach-second-brain.png",
     ],
     stack: ["React Native", "AI Coaching", "Life OS", "Goals & Habits", "Second Brain"],
-    type: "mobile",
+    type: "web",
+    liveUrl: "https://flowcoachai.com/",
     playStoreUrl: FLOWCOACH_PLAY_STORE,
   },
   {
@@ -57,7 +58,7 @@ export const projects: Project[] = [
     category: "AI App Builder · Mobile",
     description:
       "Prompt Code AI — a mobile-first app builder that turns ideas into live sites and tools. Describe your goal, generate versions, branch layouts, and export clean code. Built with Vibecode.",
-    image: "/images/projects/assistant-ai-new-project.png",
+    image: "/images/projects/assistant-ai-hero.png",
     screenshots: [
       "/images/projects/assistant-ai-new-project.png",
       "/images/projects/assistant-ai-hotel.png",

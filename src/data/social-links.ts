@@ -6,6 +6,8 @@ import {
   Briefcase,
   DollarSign,
   FolderKanban,
+  Facebook,
+  Instagram,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { siteConfig } from "@/data/site";
@@ -15,6 +17,7 @@ export interface SocialLink {
   href: string;
   icon: LucideIcon;
   subtitle?: string;
+  brand?: "x";
 }
 
 export const socialLinks: SocialLink[] = [
@@ -47,6 +50,25 @@ export const socialLinks: SocialLink[] = [
     href: "https://www.linkedin.com/search/results/people/?keywords=bolexman%20developer",
     icon: Linkedin,
     subtitle: "Find on LinkedIn",
+  },
+  {
+    label: "X",
+    href: siteConfig.twitter.url,
+    icon: MessageCircle,
+    brand: "x",
+    subtitle: `@${siteConfig.twitter.username}`,
+  },
+  {
+    label: "Facebook",
+    href: siteConfig.facebook.url,
+    icon: Facebook,
+    subtitle: "Find on Facebook",
+  },
+  {
+    label: "Instagram",
+    href: siteConfig.instagram.url,
+    icon: Instagram,
+    subtitle: `@${siteConfig.instagram.username}`,
   },
   {
     label: "Discord",
