@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { AnimatedName } from "@/components/shared/animated-name";
-import { socialLinks } from "@/data/social-links";
 import { siteConfig } from "@/data/site";
 
 export function Footer() {
@@ -25,42 +24,19 @@ export function Footer() {
       </div>
 
       <div className="relative mx-auto max-w-7xl">
-        <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
-          <div className="text-center md:text-left">
-            <Link href="/">
-              <AnimatedName className="text-2xl" />
-            </Link>
-            <p className="mt-2 max-w-sm text-sm text-muted-foreground">
-              AI Coding Engineer & Vibe Coder — building the future, one prompt at a time.
-            </p>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="mt-2 inline-block text-sm text-[#00E5FF] hover:underline"
-            >
-              {siteConfig.email}
-            </a>
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-4">
-            {socialLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={link.subtitle ?? link.label}
-                className="glass glow-border-hover flex flex-col items-start gap-0.5 rounded-xl px-4 py-2 text-sm transition hover:text-[#00E5FF]"
-              >
-                <span className="flex items-center gap-2">
-                  <link.icon className="h-4 w-4" />
-                  {link.label}
-                </span>
-                {link.subtitle && (
-                  <span className="pl-6 text-xs text-muted-foreground">{link.subtitle}</span>
-                )}
-              </a>
-            ))}
-          </div>
+        <div className="text-center md:text-left">
+          <Link href="/">
+            <AnimatedName className="text-2xl" />
+          </Link>
+          <p className="mt-2 max-w-sm text-sm text-muted-foreground">
+            AI Coding Engineer & Vibe Coder — building the future, one prompt at a time.
+          </p>
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="mt-2 inline-block text-sm text-[#00E5FF] hover:underline"
+          >
+            {siteConfig.email}
+          </a>
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm text-muted-foreground sm:flex-row">
