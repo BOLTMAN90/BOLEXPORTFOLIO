@@ -17,7 +17,7 @@ export interface SocialLink {
   href: string;
   icon: LucideIcon;
   subtitle?: string;
-  brand?: "x";
+  brand?: "x" | "fiverr" | "upwork";
 }
 
 export const socialLinks: SocialLink[] = [
@@ -37,12 +37,14 @@ export const socialLinks: SocialLink[] = [
     label: "Fiverr",
     href: "https://www.fiverr.com/search/gigs?query=bolexman",
     icon: DollarSign,
+    brand: "fiverr",
     subtitle: "Hire on Fiverr",
   },
   {
     label: "Upwork",
     href: "https://www.upwork.com/nx/search/talent/?q=bolexman",
     icon: Briefcase,
+    brand: "upwork",
     subtitle: "Hire on Upwork",
   },
   {

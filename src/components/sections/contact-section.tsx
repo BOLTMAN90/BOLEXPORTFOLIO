@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { MagneticButton } from "@/components/shared/magnetic-button";
 import { socialLinks } from "@/data/social-links";
-import { XIcon } from "@/components/shared/brand-icons";
+import { SocialLinkIcon } from "@/components/shared/brand-icons";
 import { siteConfig } from "@/data/site";
 
 function FloatingField({
@@ -155,11 +155,7 @@ export function ContactSection() {
                 className="glass glow-border-hover flex flex-col gap-0.5 rounded-xl px-4 py-3 transition hover:text-[#00E5FF]"
               >
                 <span className="flex items-center gap-3">
-                  {link.brand === "x" ? (
-                    <XIcon className="h-5 w-5 text-primary" />
-                  ) : (
-                    <link.icon className="h-5 w-5 text-primary" />
-                  )}
+                  <SocialLinkIcon link={link} className="h-5 w-5 text-primary" />
                   <span className="font-medium">{link.label}</span>
                 </span>
                 {link.subtitle && (

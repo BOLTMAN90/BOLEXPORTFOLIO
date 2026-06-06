@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { AnimatedName } from "@/components/shared/animated-name";
 import { socialLinks } from "@/data/social-links";
-import { XIcon } from "@/components/shared/brand-icons";
+import { SocialLinkIcon } from "@/components/shared/brand-icons";
 import { siteConfig } from "@/data/site";
 
 const footerSocialLinks = socialLinks.filter((link) => link.label !== "Portfolio");
@@ -69,11 +69,7 @@ export function Footer() {
                   whileTap={{ scale: 0.95 }}
                   className="glass glow-border-hover flex h-11 w-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-[#00E5FF]"
                 >
-                  {link.brand === "x" ? (
-                    <XIcon className="h-5 w-5" />
-                  ) : (
-                    <link.icon className="h-5 w-5" />
-                  )}
+                  <SocialLinkIcon link={link} className="h-5 w-5" />
                 </motion.a>
               ))}
             </div>
