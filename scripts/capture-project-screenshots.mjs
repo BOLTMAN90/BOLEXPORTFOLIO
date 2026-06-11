@@ -102,5 +102,13 @@ await capturePage({
   waitMs: 5000,
 });
 
+await capturePage({
+  name: "bolex-hospitality-hero.png",
+  url: "https://bolexhospitalitylisting.vercel.app",
+  width: 1440,
+  height: 900,
+  waitMs: 6000,
+});
+
 await capturePlayStoreScreenshots();
 console.log("Done.");

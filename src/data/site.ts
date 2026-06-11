@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "BOLEXMAN",
   title: "BOLEXMAN | AI Coding Engineer & Vibe Coder",
   description:
-    "AI Coding Engineer & Vibe Coder. I build AI-powered web apps, mobile apps, and SaaS products — including FlowCoach AI, URUNN, and Assistant App Builder — with Cursor, Supabase, and cinematic UI.",
+    "AI Coding Engineer & Vibe Coder. I build AI-powered web apps, mobile apps, and SaaS products — including FlowCoach AI, URUNN, BOLEX Hospitality, and Assistant App Builder — with Cursor, Supabase, and cinematic UI.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://bolexportfolio.vercel.app",
   email: "belrender000@gmail.com",
   github: {
@@ -27,6 +27,7 @@ export const siteConfig = {
   typingWords: [
     "FlowCoach AI",
     "URUNN",
+    "BOLEX Hospitality",
     "Cursor",
     "Supabase",
     "React Native",

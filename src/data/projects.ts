@@ -53,6 +53,18 @@ export const projects: Project[] = [
     playStoreUrl: "https://urunn-limited.app.link/JhfMRNVzrUb",
   },
   {
+    id: "bolex-hospitality",
+    name: "BOLEX Hospitality",
+    category: "Luxury Hospitality · Web",
+    description:
+      "Luxury hospitality marketplace for extraordinary stays, experiences, and concierge services worldwide. Search premium listings, explore curated experiences, and book with secure payments — Stay Beyond Expectations.",
+    image: "/images/projects/bolex-hospitality-hero.png",
+    screenshots: ["/images/projects/bolex-hospitality-hero.png"],
+    stack: ["Next.js", "Luxury Marketplace", "Concierge AI", "Secure Booking", "Experiences"],
+    type: "web",
+    liveUrl: "https://bolexhospitalitylisting.vercel.app",
+  },
+  {
     id: "assistant-ai",
     name: "Assistant: App Builder",
     category: "AI App Builder · Mobile",

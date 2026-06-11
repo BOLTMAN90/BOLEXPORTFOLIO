@@ -4,7 +4,7 @@ import { ProjectsSection } from "@/components/sections/projects-section";
 
 export const metadata: Metadata = {
   title: "Projects | BOLEXMAN",
-  description: "FlowCoach AI, URUNN, and Assistant App Builder — projects built by BOLEXMAN.",
+  description: "FlowCoach AI, URUNN, BOLEX Hospitality, and Assistant App Builder — projects built by BOLEXMAN.",
 };
 
 export default function ProjectsPage() {
