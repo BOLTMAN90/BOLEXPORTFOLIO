@@ -10,6 +10,7 @@ import { AnimatedName } from "@/components/shared/animated-name";
 import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
 import { useLenisControl } from "@/context/lenis-context";
+import { useDevicePreview } from "@/context/device-preview-context";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -18,14 +19,19 @@ export function Navbar() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+  const { isSimulated } = useDevicePreview();
 
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
+    if (isSimulated) {
+      setScrolled(true);
+      return;
+    }
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isSimulated]);
 
   useEffect(() => {
     setOpen(false);
@@ -39,8 +45,11 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        scrolled ? "glass-strong py-3 shadow-lg shadow-primary/5" : "bg-transparent py-5"
+        "z-50 transition-all duration-500",
+        isSimulated ? "sticky top-0" : "fixed top-0 left-0 right-0",
+        scrolled || isSimulated
+          ? "glass-strong py-3 shadow-lg shadow-primary/5"
+          : "bg-transparent py-5"
       )}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">

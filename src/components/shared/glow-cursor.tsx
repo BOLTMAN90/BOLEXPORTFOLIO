@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { useDevicePreview } from "@/context/device-preview-context";
 
 export function GlowCursor() {
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const isDesktop = useMediaQuery("(min-width: 1024px)");
   const reduced = useReducedMotion();
+  const { isSimulated } = useDevicePreview();
 
   useEffect(() => {
     if (!isDesktop || reduced) return;
@@ -17,7 +19,7 @@ export function GlowCursor() {
     return () => window.removeEventListener("mousemove", move);
   }, [isDesktop, reduced]);
 
-  if (!isDesktop || reduced) return null;
+  if (!isDesktop || reduced || isSimulated) return null;
 
   return (
     <>

@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { PageLoader } from "@/components/shared/page-loader";
 import { GlowCursor } from "@/components/shared/glow-cursor";
+import { DevicePreviewShell } from "@/components/shared/device-preview-shell";
 import { siteConfig } from "@/data/site";
 import "./globals.css";
 
@@ -74,10 +75,12 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         <Providers>
           <PageLoader />
-          <GlowCursor />
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <DevicePreviewShell>
+            <GlowCursor />
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </DevicePreviewShell>
         </Providers>
       </body>
     </html>
