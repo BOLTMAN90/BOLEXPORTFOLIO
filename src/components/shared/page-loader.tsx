@@ -5,9 +5,11 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedName } from "./animated-name";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { useDevicePreview } from "@/context/device-preview-context";
 
 export function PageLoader() {
   const pathname = usePathname();
+  const { isSimulated } = useDevicePreview();
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const reduced = useReducedMotion();
@@ -54,6 +56,8 @@ export function PageLoader() {
       clearTimeout(timeout);
     };
   }, [reduced, pathname]);
+
+  if (isSimulated) return null;
 
   return (
     <AnimatePresence>

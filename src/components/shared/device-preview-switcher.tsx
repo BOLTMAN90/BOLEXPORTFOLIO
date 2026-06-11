@@ -12,14 +12,16 @@ const options: { mode: DevicePreviewMode; label: string; icon: typeof Monitor }[
 ];
 
 export function DevicePreviewSwitcher() {
-  const { mode, setMode } = useDevicePreview();
+  const { mode, setMode, isEmbedded } = useDevicePreview();
+
+  if (isEmbedded) return null;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.6, duration: 0.5 }}
-      className="fixed bottom-6 left-1/2 z-[60] -translate-x-1/2"
+      transition={{ duration: 0.35 }}
+      className="z-[110]"
       role="toolbar"
       aria-label="Preview device size"
     >
